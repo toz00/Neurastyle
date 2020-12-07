@@ -17,3 +17,27 @@ base_image_path = 'start.jpg'
 style_image_path = 'model.jpg'
 # Any results you write to the current directory are saved as output.
 #fetch merge push
+
+
+width, height = load_img(base_image_path).size
+img_nrows = 400
+img_ncols = int(width * img_nrows / height)
+
+
+def preprocess_image(image_path):
+    from keras.applications import vgg19
+    img = load_img(image_path, target_size=(img_nrows, img_ncols))
+    img = img_to_array(img)
+    img = np.expand_dims(img, axis=0)
+    img = vgg19.preprocess_input(img)
+    return img
+
+plt.figure()
+plt.title("Base Image",fontsize=20)
+img1 = load_img(base_image_path)
+plt.imshow(img1)
+
+plt.figure()
+plt.title("Style Image",fontsize=20)
+img1 = load_img(style_image_path)
+plt.imshow(img1)

@@ -51,7 +51,7 @@ content_weight = 2.5e-8
 
 # Dimensions of the generated picture.
 width, height = keras.preprocessing.image.load_img(base_image_path).size
-img_nrows = 400
+img_nrows = 300
 img_ncols = int(width * img_nrows / height)
 
 """
